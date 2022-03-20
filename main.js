@@ -33,6 +33,13 @@ function drawPoints() {
       ctx.fill();
     }
   }
+  if (pts.length >= 10) {
+    exact_solution.disabled = false;
+    console.log("disable");
+  } else {
+    exact_solution.disabled = true;
+    console.log("able");
+  }
 }
 function drawPath(order, color = "#444") {
   ctx.strokeStyle = color;
@@ -55,11 +62,6 @@ canvas.addEventListener(
     // console.log(x, y);
     pts.push([x, y]);
     drawPoints();
-    if (pts.length >= 10) {
-      exact_solution.disabled = false;
-    } else {
-      exact_solution.disabled = true;
-    }
   },
   false
 );

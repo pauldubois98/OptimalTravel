@@ -25,10 +25,23 @@
       <canvas id="main-canvas" width="600" height="400">
       </canvas>
       <div>
+        <div>
+          <button onclick="remove_all()">Remove all</button>
+          <button onclick="remove(1)">Remove one</button>
+        </div>
+        <div>
+          <button onclick="random_points(1)">1 random</button>
+          <button onclick="random_points(5)">5 random</button>
+          <button onclick="random_points(10)">10 random</button>
+          <button onclick="random_points(50)">50 random</button>
+          <button onclick="random_points(100)">100 random</button>
+        </div>
+        <div>
+          <button id="standard">Standard order</button>
+          <button id="random">Random solution</button>
+          <button id="exact">Solve exactly</button>
+        </div>
         
-        <button id="standard">Standard order</button>
-        <button id="random">Random solution</button>
-        <button id="exact">Solve exactly</button>
       </div>
     </main>
         
@@ -36,5 +49,6 @@
 
 <script src="utils.js"></script>
 <script src="main.js"></script>
+<script src="controls_points.js"></script>
 <script src="controls_solution.js"></script>
 </html>
