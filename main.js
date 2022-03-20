@@ -12,8 +12,10 @@ canvas.oncontextmenu = function (e) {
   e.stopPropagation();
 };
 
-function drawPoints() {
+function clear() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+}
+function drawPoints() {
   if (pts.length > 0) {
     ctx.fillStyle = "#AAA";
     ctx.strokeStyle = "#444";
@@ -32,25 +34,8 @@ function drawPoints() {
     }
   }
 }
-
-canvas.addEventListener(
-  "click",
-  function (event) {
-    x = event.pageX - canvasLeft;
-    y = event.pageY - canvasTop;
-    // console.log(x, y);
-    pts.push([x, y]);
-    drawPoints();
-    if (pts.length > 2 && pts.length < 8) {
-      std_order = Array.from(Array(pts.length - 1).keys()).map((i) => i + 1);
-      order = shortest();
-      drawPath(order);
-    }
-  },
-  false
-);
-
-function drawPath(order) {
+function drawPath(order, color = "#444") {
+  ctx.strokeStyle = color;
   ctx.beginPath();
   ctx.moveTo(pts[0][0], pts[0][1]);
   for (let k = 0; k < order.length; k++) {
@@ -62,41 +47,19 @@ function drawPath(order) {
   ctx.stroke();
 }
 
-function sq_distance(order) {
-  d = 0;
-  i = 0;
-  j = order[0];
-  dx = pts[i][0] - pts[j][0];
-  dy = pts[i][1] - pts[j][1];
-  d += dx * dx + dy * dy;
-  for (let k = 0; k < order.length - 1; k++) {
-    i = order[k];
-    j = order[k + 1];
-    dx = pts[i][0] - pts[j][0];
-    dy = pts[i][1] - pts[j][1];
-    d += dx * dx + dy * dy;
-  }
-  i = order[order.length - 1];
-  j = 0;
-  dx = pts[i][0] - pts[j][0];
-  dy = pts[i][1] - pts[j][1];
-  d += dx * dx + dy * dy;
-  return d;
-}
-
-function shortest() {
-  std_order = Array.from(Array(pts.length - 1).keys()).map((i) => i + 1);
-  it = heapsAlg(std_order);
-  dmin = Infinity;
-  omin = std_order;
-  let order = it.next();
-  while (!order.done) {
-    d = sq_distance(order.value);
-    if (d < dmin) {
-      dmin = d;
-      omin = order.value;
+canvas.addEventListener(
+  "click",
+  function (event) {
+    x = event.pageX - canvasLeft;
+    y = event.pageY - canvasTop;
+    // console.log(x, y);
+    pts.push([x, y]);
+    drawPoints();
+    if (pts.length >= 10) {
+      exact_solution.disabled = false;
+    } else {
+      exact_solution.disabled = true;
     }
-    order = it.next();
-  }
-  return omin;
-}
+  },
+  false
+);

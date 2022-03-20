@@ -16,3 +16,14 @@ h2 {
 canvas {
   border: 1px solid #000000;
 }
+
+/* controls */
+#standard {
+  color: grey;
+}
+#exact {
+  color: green;
+}
+#random {
+  color: blue;
+}
