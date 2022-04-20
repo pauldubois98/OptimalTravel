@@ -10,10 +10,9 @@ function remove(nb = 1) {
   for (var i = 0; i < nb; i++) {
     pts.pop();
   }
-  clear();
   drawPoints();
 }
 function remove_all() {
   pts = [];
-  clear();
+  drawPoints();
 }

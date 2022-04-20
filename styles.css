@@ -18,6 +18,9 @@ canvas {
 }
 
 /* controls */
+.btns{
+  margin: 5px;
+}
 #standard {
   color: grey;
 }
@@ -26,4 +29,5 @@ canvas {
 }
 #random {
   color: blue;
+  color: royalblue;
 }

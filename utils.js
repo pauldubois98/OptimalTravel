@@ -37,6 +37,27 @@ function* heapsAlg(arr, clone = true) {
   }
 }
 
+function distance(order) {
+  d = 0;
+  i = 0;
+  j = order[0];
+  dx = pts[i][0] - pts[j][0];
+  dy = pts[i][1] - pts[j][1];
+  d += Math.sqrt(dx * dx + dy * dy);
+  for (let k = 0; k < order.length - 1; k++) {
+    i = order[k];
+    j = order[k + 1];
+    dx = pts[i][0] - pts[j][0];
+    dy = pts[i][1] - pts[j][1];
+    d += Math.sqrt(dx * dx + dy * dy);
+  }
+  i = order[order.length - 1];
+  j = 0;
+  dx = pts[i][0] - pts[j][0];
+  dy = pts[i][1] - pts[j][1];
+  d += Math.sqrt(dx * dx + dy * dy);
+  return d;
+}
 function sq_distance(order) {
   d = 0;
   i = 0;
