@@ -26,6 +26,10 @@
       </canvas>
       <div>
         <div class="btns">
+          <input type="checkbox" id="labels" name="labels" checked onchange="drawPoints();">
+          <label for="labels">Labels</label>
+        </div>
+        <div class="btns">
           <button onclick="remove_all()">Remove all</button>
           <button onclick="remove(1)">Remove one</button>
         </div>
@@ -37,7 +41,7 @@
           <button onclick="random_points(100)">100 random</button>
         </div>
         <div class="btns">
-          <button id="standard">Standard order</button>
+          <button id="standard">Label order</button>
           <button id="random">Random solution</button>
           <!-- <button id="no-crossings">Random & remove crossings solution</button> -->
           <!-- <button id="closest">Closest point solution</button> -->

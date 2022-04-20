@@ -1,4 +1,4 @@
-var canvas = document.getElementById("main-canvas");
+var labels_checkbox = document.getElementById("labels");
 var canvas = document.getElementById("main-canvas");
 var canvasLeft = canvas.offsetLeft + canvas.clientLeft;
 var canvasTop = canvas.offsetTop + canvas.clientTop;
@@ -47,11 +47,13 @@ function drawPoints() {
       ctx.fill();
     }
   }
-  // exact solve button
-  if (pts.length >= 10) {
-    exact_solution.disabled = true;
-  } else {
-    exact_solution.disabled = false;
+  // lables
+  if (pts.length > 0 && labels_checkbox.checked) {
+    ctx.fillStyle = "#333";
+    for (let i = 0; i < pts.length; i++) {
+      ctx.font = "18px serif";
+      ctx.fillText(i, pts[i][0] + 5, pts[i][1] - 5);
+    }
   }
   // solutions buttons
   if (pts.length < 2) {
@@ -61,6 +63,12 @@ function drawPoints() {
   } else {
     standard_solution.disabled = false;
     random_solution.disabled = false;
+    exact_solution.disabled = false;
+  }
+  // exact solve button
+  if (pts.length > 10) {
+    exact_solution.disabled = true;
+  } else {
     exact_solution.disabled = false;
   }
   // path
