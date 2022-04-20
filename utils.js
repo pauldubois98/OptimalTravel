@@ -38,6 +38,9 @@ function* heapsAlg(arr, clone = true) {
 }
 
 function distance(order) {
+  if (pts.length < 2 || order.length < 1) {
+    return -1;
+  }
   d = 0;
   i = 0;
   j = order[0];

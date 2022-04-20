@@ -17,6 +17,11 @@ canvas {
   border: 1px solid #000000;
 }
 
+/* path length */
+#path_length{
+  text-align: center;
+}
+
 /* controls */
 .btns{
   margin: 5px;

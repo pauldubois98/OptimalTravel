@@ -21,6 +21,7 @@ canvas.addEventListener(
     y = event.pageY - canvasTop;
     // console.log(x, y);
     pts.push([x, y]);
+    order = [];
     drawPoints();
   },
   false
@@ -83,5 +84,16 @@ function drawPoints() {
     i = 0;
     ctx.lineTo(pts[i][0], pts[i][1]);
     ctx.stroke();
+  }
+  // path length
+  display_path_length();
+}
+function display_path_length() {
+  length = distance(order);
+  if (length == -1) {
+    path_length.textContent = "No path";
+  } else {
+    path_length.textContent =
+      "Path length: " + Math.round(length * 100) / 100 + "px";
   }
 }
