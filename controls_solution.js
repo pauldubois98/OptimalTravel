@@ -21,7 +21,7 @@ random_solution.addEventListener(
     std_order = Array.from(Array(pts.length - 1).keys()).map((i) => i + 1);
     random_order = shuffle(std_order);
     order = random_order;
-    path_color = "#00F";
+    path_color = "#4169e1";
     drawPoints();
   },
   false
@@ -80,7 +80,7 @@ exact_solution.addEventListener(
     if (pts.length > 1 && pts.length <= 10) {
       order_min = shortest();
       order = order_min;
-      path_color = "#0F0";
+      path_color = "#080";
       drawPoints();
     }
   },
